@@ -1,0 +1,9 @@
+You have the option to run your test virtual machine in Hyper-V or any other virtualization platform.
+But if you wish to use Virtual Box, you will have to restart your computer after entering the following command into your Command Prompt:
+
+To disable Hyper-V
+dism.exe /Online /Disable-Feature:Microsoft-Hyper-V
+To enable:
+bcdedit /set hypervisorlaunchtype auto 
+
+
