@@ -7,6 +7,7 @@ tar xzf prometheus-2.19.1.linux-amd64.tar.gz
 sudo cp prometheus-2.19.1.linux-amd64/prometheus /usr/local/bin
 sudo chown prometheus:prometheus /usr/local/bin/prometheus
 sudo cp -r prometheus-2.19.1.linux-amd64/{consoles,console_libraries}
+sudo cp prometheus-2.19.1.linux-amd64/prometheus.yml /etc/prometheus
 sudo chown -R prometheus:prometheus /etc/prometheus
 sudo chown prometheus:prometheus /var/lib/promethues
 
