@@ -1,13 +1,13 @@
 #!/bin/bash
 sudo useradd -M -r -s /bin/false prometheus
 sudo mkdir /etc/prometheus
-sudo mkdir /var/lib/promethues
+sudo mkdir /var/lib/prometheus
 sudo wget https://github.com/prometheus/prometheus/releases/download/v2.19.1/prometheus-2.19.1.linux-amd64.tar.gz
 tar xzf prometheus-2.19.1.linux-amd64.tar.gz
-sudo cp prometheus-2.19.1.linux-amd64.tar.gz/prometheus /usr/local/bin
+sudo cp prometheus-2.19.1.linux-amd64/prometheus /usr/local/bin
 sudo chown prometheus:prometheus /usr/local/bin/prometheus
-sudo cp -r prometheus-2.19.1.linux-amd64.tar.gz/{consoles,console_libraries}
-sudo chown -R promethues:prometheus /etc/promethues
+sudo cp -r prometheus-2.19.1.linux-amd64/{consoles,console_libraries}
+sudo chown -R prometheus:prometheus /etc/prometheus
 sudo chown prometheus:prometheus /var/lib/promethues
 
 sudo tee -a /etc/systemd/system/prometheus.service > /dev/null <<EOT
