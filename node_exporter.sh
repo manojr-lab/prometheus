@@ -6,8 +6,8 @@ sudo cp node_exporter-1.0.1.linux-amd64/node_exporter /usr/local/bin
 
 sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter
 
-sudo cat << EOF >> /etc/systemd/system/node_exporter.service
-     [Unit]
+sudo tee -a /etc/systemd/system/node_exporter.service > /dev/null <<EOT
+     [Unit]    
      Description=node exporter service
      Wants=network-online.target
 
@@ -20,7 +20,7 @@ sudo cat << EOF >> /etc/systemd/system/node_exporter.service
      [Install]
      WantedBy=multi-user.target
 
-EOF
+EOT
 
 sudo systemctl daemon-reload
 sudo systemctl enable node_exporter
