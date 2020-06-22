@@ -4,13 +4,13 @@ sudo mkdir /etc/prometheus
 sudo mkdir /var/lib/promethues
 sudo wget https://github.com/prometheus/prometheus/releases/download/v2.19.1/prometheus-2.19.1.linux-amd64.tar.gz
 tar xzf prometheus-2.19.1.linux-amd64.tar.gz
-sudo cp prometheus-2.19.1.linux-amd64.tar.gz/promethues /usr/local/bin
-sudo chown promethues:promethues /usr/local/bin/prometheus
+sudo cp prometheus-2.19.1.linux-amd64.tar.gz/prometheus /usr/local/bin
+sudo chown prometheus:prometheus /usr/local/bin/prometheus
 sudo cp -r prometheus-2.19.1.linux-amd64.tar.gz/{consoles,console_libraries}
 sudo chown -R promethues:prometheus /etc/promethues
 sudo chown prometheus:prometheus /var/lib/promethues
 
-cat <<EOF >> /etc/systemd/system/prometheus.service
+sudo tee -a /etc/systemd/system/prometheus.service > /dev/null <<EOT
      [Unit]
      Description=Prometheus Time Series Collection and Processing Server
      Wants=network-online.target
@@ -28,6 +28,9 @@ cat <<EOF >> /etc/systemd/system/prometheus.service
 
      [Install]
      WantedBy=multi-user.target
-     EOF
+
+EOT
 
 sudo systemctl daemon-reload
+sudo systemctl enable prometheus
+sudo systemctl start prometheus
